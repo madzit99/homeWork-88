@@ -8,7 +8,7 @@ const postsRouter = express.Router();
 
 postsRouter.get("/", async (req, res, next) => {
   try {
-    const post = await Post.find();
+    const post = await Post.find().populate("user", "username");
     return res.send(post);
   } catch (error) {
     return next(error);
@@ -27,7 +27,7 @@ postsRouter.post("/", auth, imagesUpload.single("image"), async (req:RequestWith
       title: req.body.title,
       description: req.body.description,
       image: req.file ? req.file.filename : null,
-      date: req.body.date,
+      date: Date.now(),
     };
 
     const post = new Post(postData);

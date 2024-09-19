@@ -30,3 +30,15 @@ export interface ValidationError {
 export interface GlobalError {
   error: string;
 }
+
+export interface Post {
+  _id: string;
+  user: {
+    username: string;
+    _id: string;
+  };
+  title: string;
+  description: string;
+  image: string;
+  date: Date;
+}
