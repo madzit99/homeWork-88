@@ -14,6 +14,7 @@ postsRouter.get("/", async (req, res, next) => {
     return next(error);
   }
 });
+
 postsRouter.post("/", auth, imagesUpload.single("image"), async (req:RequestWithUser, res, next) => {
   try {
 

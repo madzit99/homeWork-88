@@ -2,7 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import config from './config';
-import categoriesRouter from './routers/categories';
+import commentsRouter from './routers/comments';
+import postsRouter from './routers/posts';
+import userRouter from './routers/users';
 
 const app = express();
 const port = 8000;
@@ -11,7 +13,9 @@ app.use(cors(config.corsOptions));
 app.use(express.json());
 app.use(express.static('public'));
 
-app.use("/categories", categoriesRouter);
+app.use("/comments", commentsRouter);
+app.use("/posts", postsRouter);
+app.use("/users", userRouter);
 
 const run = async () => {
   await mongoose.connect(config.database);
