@@ -52,7 +52,7 @@ const Login = () => {
         <LockOpenIcon />
       </Avatar>
       <Typography component="h1" variant="h5">
-        Sign in
+        Войти
       </Typography>
       {error && (
         <Alert severity="error" sx={{ mt: 3 }}>
@@ -64,7 +64,7 @@ const Login = () => {
           <Grid item>
             <TextField
               required
-              label="Username"
+              label="Имя пользователя"
               name="username"
               autoComplete="current-username"
               value={state.username}
@@ -75,7 +75,7 @@ const Login = () => {
             <TextField
               required
               type="password"
-              label="Password"
+              label="Пароль"
               name="password"
               autoComplete="new-password"
               value={state.password}
@@ -92,7 +92,7 @@ const Login = () => {
           Sign in
         </Button>
         <Link component={RouterLink} to="/register" variant="body2">
-          Or sign up
+          Или зарегистрируйтесь
         </Link>
       </Box>
     </Box>

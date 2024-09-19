@@ -47,7 +47,7 @@ const FileInput: React.FC<Props> = ({ onChange, name, label }) => {
         </Grid>
         <Grid item>
           <Button variant="outlined" onClick={activateInput}>
-            Browse
+            Просматривать
           </Button>
         </Grid>
       </Grid>

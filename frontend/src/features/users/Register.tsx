@@ -61,7 +61,7 @@ const Register = () => {
         <LockOutlinedIcon />
       </Avatar>
       <Typography component="h1" variant="h5">
-        Sign up
+        Зарегистрироваться
       </Typography>
       <Box
         component="form"
@@ -73,7 +73,7 @@ const Register = () => {
           <Grid item>
             <TextField
               required
-              label="Username"
+              label="Имя пользователя"
               name="username"
               autoComplete="new-username"
               value={state.username}
@@ -86,7 +86,7 @@ const Register = () => {
             <TextField
               required
               type="password"
-              label="Password"
+              label="Пароль"
               name="password"
               autoComplete="new-password"
               value={state.password}
@@ -99,7 +99,7 @@ const Register = () => {
             <TextField
               required
               type="password"
-              label="Confirm Password"
+              label="Подтвердите пароль"
               name="confirmPassword"
               autoComplete="new-password"
               value={state.confirmPassword}
@@ -115,10 +115,10 @@ const Register = () => {
           variant="contained"
           sx={{ mt: 3, mb: 2 }}
         >
-          Sign up
+          Зарегистрироваться
         </Button>
         <Link component={RouterLink} to="/login" variant="body2">
-          Already have an account? Sign in
+          У вас уже есть аккаунт? Войти
         </Link>
       </Box>
     </Box>
