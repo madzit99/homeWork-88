@@ -57,7 +57,6 @@ const PostItem: React.FC<Props> = ({ post }) => {
           <Grid item container>
             <Typography variant="h5">{dateFormat}</Typography>
             <Typography variant="h5" sx={{ ml: "20px" }}>
-              by{" "}
               <span style={{ fontWeight: "bold" }}>{post.user.username}</span>
             </Typography>
           </Grid>

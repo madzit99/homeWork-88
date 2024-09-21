@@ -10,15 +10,16 @@ import {
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { useAppDispatch } from "../../app/hooks";
 import { selectRegisterError } from "./usersSlice";
 import { RegisterMutation } from "../../types";
 import { register } from "./usersThunks";
+import { useSelector } from "react-redux";
 
 const Register = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const error = useAppSelector(selectRegisterError);
+  const error = useSelector(selectRegisterError);
 
   const [state, setState] = useState<RegisterMutation>({
     username: "",
@@ -44,7 +45,7 @@ const Register = () => {
       await dispatch(register(state)).unwrap();
       navigate("/");
     } catch (e) {
-      console.log(error);
+      console.log(e);
     }
   };
 

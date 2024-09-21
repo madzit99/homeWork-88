@@ -1,19 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { RootState } from "../../app/store";
 import { Post } from "../../types";
-import { fetchOnePost, fetchPosts } from "./postThunks";
+import { fetchOnePost, fetchPosts } from "./postThunk";
 
 interface postsState {
   posts: Post[];
   singlePost: Post | null;
-  loading: boolean;
-  error: boolean;
+  fetchLoading: boolean;
+  singleFetchLoading: boolean;
 }
 
 const initialState: postsState = {
   posts: [],
   singlePost: null,
-  loading: false,
-  error: false,
+  fetchLoading: false,
+  singleFetchLoading: false,
 };
 
 export const postsSlice = createSlice({
@@ -22,38 +23,33 @@ export const postsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchPosts.pending, (state) => {
-      state.loading = true;
-      state.error = false;
+      state.fetchLoading = true;
     });
     builder.addCase(fetchPosts.fulfilled, (state, { payload: posts }) => {
-      state.loading = false;
+      state.fetchLoading = false;
       state.posts = posts;
     });
     builder.addCase(fetchPosts.rejected, (state) => {
-      state.loading = false;
-      state.error = true;
+      state.fetchLoading = false;
     });
 
     builder.addCase(fetchOnePost.pending, (state) => {
-      state.loading = true;
+      state.singleFetchLoading = true;
     });
     builder.addCase(fetchOnePost.fulfilled, (state, { payload: post }) => {
-      state.loading = false;
+      state.singleFetchLoading = false;
       state.singlePost = post;
     });
     builder.addCase(fetchOnePost.rejected, (state) => {
-      state.loading = false;
+      state.singleFetchLoading = false;
     });
-  },
-  selectors: {
-    selectPosts: (state) => state.posts,
-    selectOnePost: (state) => state.singlePost,
-    selectLoading: (state) => state.loading,
-    selectError: (state) => state.error,
   },
 });
 
 export const postsReducer = postsSlice.reducer;
-
-export const { selectPosts, selectOnePost, selectLoading, selectError } =
-  postsSlice.selectors;
+export const selectPosts = (state: RootState) => state.posts.posts;
+export const selectSinglePost = (state: RootState) => state.posts.singlePost;
+export const selectPostsLoading = (state: RootState) =>
+  state.posts.fetchLoading;
+export const selectSinglePostLoading = (state: RootState) =>
+  state.posts.singleFetchLoading;

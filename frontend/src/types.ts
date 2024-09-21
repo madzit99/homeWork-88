@@ -4,6 +4,11 @@ export interface RegisterMutation {
   confirmPassword: string;
 }
 
+export interface RegisterResponse {
+  message: string;
+  user: User;
+}
+
 export interface LoginMutation {
   username: string;
   password: string;
@@ -41,4 +46,20 @@ export interface Post {
   description: string;
   image: string;
   date: Date;
+}
+
+export interface PostMutation {
+  title: string;
+  description: string;
+  image: File | null;
+}
+
+export interface Comment {
+  _id: string;
+  user: {
+    username: string;
+    _id: string;
+  };
+  postId: string;
+  message: string;
 }

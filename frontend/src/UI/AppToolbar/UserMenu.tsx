@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Button, Grid, Menu, MenuItem } from "@mui/material";
+import { Button, Grid, Menu, MenuItem, Typography } from "@mui/material";
 import { useAppDispatch } from "../../app/hooks";
 import { logout } from "../../features/users/usersThunks";
 import { User } from "../../types";
+import { Link } from "react-router-dom";
 
 interface Props {
   user: User;
@@ -28,9 +29,14 @@ const UserMenu: React.FC<Props> = ({ user }) => {
   return (
     <Grid item>
       <Button onClick={handleClick} color="inherit">
-        Hello, {user.username}!
+        Привет,  {user.username} 
       </Button>
       <Menu open={isOpen} anchorEl={anchorEl} onClose={handleClose} keepMounted>
+        <MenuItem>
+          <Typography   sx={{ textAlign: "center" }}>
+            <Link to="/addNew">Создать новый пост</Link>
+          </Typography>
+        </MenuItem>
         <MenuItem onClick={handleLogout}>Выйти</MenuItem>
       </Menu>
     </Grid>
