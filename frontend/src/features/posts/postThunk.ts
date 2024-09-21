@@ -26,7 +26,7 @@ export const createPost = createAsyncThunk<
 >("dishes/create", async (postMutation, thunkApi) => {
   try {
     const state = thunkApi.getState();
-    const token = state.users.user?token;
+    const token = state.users.user?.token;
 
     if (token) {
       const formData = new FormData();

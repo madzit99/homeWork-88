@@ -13,7 +13,7 @@ export const fetchComments = createAsyncThunk<Comment[], string>(
 
 interface CommentData {
   postId: string;
-  message: string;
+  text: string;
 }
 
 export const createComment = createAsyncThunk<

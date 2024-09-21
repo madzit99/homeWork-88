@@ -1,19 +1,19 @@
 import { Box, Grid, Typography } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { useParams } from "react-router-dom";
-import { selectSinglePost, selectSinglePostLoading } from "../postSlice";
 import { useEffect } from "react";
 import { fetchOnePost } from "../postThunk";
 import dayjs from "dayjs";
 import { API_URL } from "../../../constants";
 import Comments from "../../comments/Comments";
 import Preloader from "../../../components/Preloader/Preloader";
+import { selectLoading, selectOnePost } from "../postSlice";
 
 const FullPost = () => {
   const dispatch = useAppDispatch();
   const { id } = useParams<{ id?: string }>();
-  const post = useAppSelector(selectSinglePost);
-  const loading = useAppSelector(selectSinglePostLoading);
+  const post = useAppSelector(selectOnePost);
+  const loading = useAppSelector(selectLoading);
 
   const dateFormat = dayjs(post?.date).format("DD/MM/YYYY HH:mm:ss");
 

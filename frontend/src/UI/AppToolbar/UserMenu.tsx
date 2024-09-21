@@ -33,7 +33,7 @@ const UserMenu: React.FC<Props> = ({ user }) => {
       </Button>
       <Menu open={isOpen} anchorEl={anchorEl} onClose={handleClose} keepMounted>
         <MenuItem>
-          <Typography   sx={{ textAlign: "center" }}>
+          <Typography>
             <Link to="/addNew">Создать новый пост</Link>
           </Typography>
         </MenuItem>

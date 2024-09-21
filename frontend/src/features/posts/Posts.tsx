@@ -1,15 +1,16 @@
-import { Grid, Typography } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { selectPosts, selectPostsLoading } from "./postSlice";
+import { useSelector } from "react-redux";
+import { useAppDispatch } from "../../app/hooks";
 import { useEffect } from "react";
-import { fetchPosts } from "./postThunk";
-import PostItem from "./Components/PostItem";
+import { selectLoading, selectPosts } from "./postSlice";
+import { Grid, Typography } from "@mui/material";
 import Preloader from "../../components/Preloader/Preloader";
+import PostItem from "./Components/PostItem";
+import { fetchPosts } from "./postThunk";
 
 const Posts = () => {
   const dispatch = useAppDispatch();
-  const posts = useAppSelector(selectPosts);
-  const loading = useAppSelector(selectPostsLoading);
+  const posts = useSelector(selectPosts);
+  const loading = useSelector(selectLoading);
 
   useEffect(() => {
     dispatch(fetchPosts());
@@ -18,7 +19,7 @@ const Posts = () => {
   return (
     <>
       <Typography variant="h3" sx={{ pt: "20px", fontWeight: "bold" }}>
-        Последний пост:
+        Посты:
       </Typography>
       {loading ? (
         <Preloader loading={loading} />
@@ -37,7 +38,7 @@ const Posts = () => {
         >
           {posts.length <= 0 ? (
             <Typography variant="h1" sx={{ borderBottom: "3px solid black" }}>
-              Пока нет поста
+              Нет постов
             </Typography>
           ) : (
             <>
@@ -51,5 +52,4 @@ const Posts = () => {
     </>
   );
 };
-
 export default Posts;

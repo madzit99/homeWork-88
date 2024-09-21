@@ -13,7 +13,7 @@ const CommentItem: React.FC<Props> = ({ comment }) => (
           {comment.user.username}
         </Typography>
         <Typography variant="body1" color="textSecondary">
-          {comment.message}
+          {comment.text}
         </Typography>
       </CardContent>
     </Card>

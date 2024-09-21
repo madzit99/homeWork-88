@@ -28,7 +28,9 @@ const CreatePost = () => {
   };
   return (
     <Container>
-      <Typography variant="h4">Создать новый пост</Typography>
+      <Typography variant="h4" sx={{ textAlign: "center" }}>
+        Создать новый пост
+      </Typography>
       <PostForm onSubmit={onFormSubmit} />
     </Container>
   );

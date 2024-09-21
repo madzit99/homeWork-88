@@ -19,11 +19,13 @@ interface Props {
 
 const PostItem: React.FC<Props> = ({ post }) => {
   const dateFormat = dayjs(post.date).format("DD/MM/YYYY HH:mm:ss");
+
   let cardImage = ChatIcon;
 
   if (post.image) {
     cardImage = API_URL + "/" + post.image;
   }
+
   return (
     <>
       <Grid
@@ -57,6 +59,7 @@ const PostItem: React.FC<Props> = ({ post }) => {
           <Grid item container>
             <Typography variant="h5">{dateFormat}</Typography>
             <Typography variant="h5" sx={{ ml: "20px" }}>
+              к {""}
               <span style={{ fontWeight: "bold" }}>{post.user.username}</span>
             </Typography>
           </Grid>
@@ -70,5 +73,4 @@ const PostItem: React.FC<Props> = ({ post }) => {
     </>
   );
 };
-
 export default PostItem;
